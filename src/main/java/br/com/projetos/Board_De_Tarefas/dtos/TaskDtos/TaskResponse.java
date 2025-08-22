@@ -7,7 +7,6 @@ public record TaskResponse(
 
         String name,
         String description,
-        LocalDate createdAt,
         LocalDate deadline
 
 ) {

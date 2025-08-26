@@ -11,7 +11,6 @@ import java.time.LocalDate;
 @Component
 public class BoardMapper {
 
-    @Autowired
     public Board toBoard(BoardRequest request){
         Board board = new Board();
         board.setName(request.name());

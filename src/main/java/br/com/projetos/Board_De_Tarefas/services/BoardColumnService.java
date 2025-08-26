@@ -8,6 +8,7 @@ import br.com.projetos.Board_De_Tarefas.mappers.BoardColumnMapper;
 import br.com.projetos.Board_De_Tarefas.mappers.TaskMapper;
 import br.com.projetos.Board_De_Tarefas.repositories.BoardColumnRepository;
 import br.com.projetos.Board_De_Tarefas.repositories.BoardRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,31 +32,31 @@ public class BoardColumnService {
         BoardColumn column = boardColumnMapper.toBoardColumn(request);
 
         Board board = boardRepository.findById(request.boardId())
-                .orElseThrow(() -> new RuntimeException("Board not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Board not found"));
         column.setBoard(board);
 
         boardColumnRepository.save(column);
-        return boardColumnMapper.toResponse(column, new TaskMapper());
+        return boardColumnMapper.toResponse(column, taskMapper);
     }
 
-    public  BoardColumnResponse update(BoardColumnRequest request, Long id) {
+    public BoardColumnResponse update(BoardColumnRequest request, Long id) {
         BoardColumn column = boardColumnRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Column not found"));
+                .orElseThrow(()-> new EntityNotFoundException("Column not found"));
 
         column.setName(request.name());
 
         if(request.boardId()!=null){
             Board board = boardRepository.findById(request.boardId())
-                    .orElseThrow(()->new RuntimeException("Board not found"));
+                    .orElseThrow(()->new EntityNotFoundException("Board not found"));
             column.setBoard(board);
         }
 
         boardColumnRepository.save(column);
-        return boardColumnMapper.toResponse(column, new TaskMapper());
+        return boardColumnMapper.toResponse(column, taskMapper);
     }
 
     public List<BoardColumnResponse> listByBoard(Long id) {
-        return boardColumnRepository.findById(id)
+        return boardColumnRepository.findByBoardId(id)
                 .stream().map(column -> boardColumnMapper.toResponse(column, taskMapper)).toList();
     }
 

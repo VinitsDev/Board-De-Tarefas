@@ -7,6 +7,7 @@ import br.com.projetos.Board_De_Tarefas.entities.Task;
 import br.com.projetos.Board_De_Tarefas.mappers.TaskMapper;
 import br.com.projetos.Board_De_Tarefas.repositories.BoardColumnRepository;
 import br.com.projetos.Board_De_Tarefas.repositories.TaskRepository;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -29,7 +30,7 @@ public class TaskService {
         Task task = taskMapper.toTask(request);
 
         BoardColumn column = boardColumnRepository.findById(request.columnId())
-                .orElseThrow(() -> new RuntimeException("Column not found"));
+                .orElseThrow(() -> new EntityNotFoundException("Column not found"));
 
         task.setColumn(column);
 
@@ -39,7 +40,7 @@ public class TaskService {
 
     public TaskResponse update(TaskRequest request, Long id) {
         Task task = taskRepository.findById(id)
-                .orElseThrow(()-> new RuntimeException("Task not found"));
+                .orElseThrow(()-> new EntityNotFoundException("Task not found"));
 
         task.setName(request.name());
         task.setDescription(request.description());
@@ -47,7 +48,7 @@ public class TaskService {
 
         if (request.columnId()!=null){
             BoardColumn column = boardColumnRepository.findById(request.columnId())
-                    .orElseThrow(()-> new RuntimeException("Column not found"));
+                    .orElseThrow(()-> new EntityNotFoundException("Column not found"));
             task.setColumn(column);
         }
 

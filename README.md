@@ -24,17 +24,6 @@ Um sistema de gerenciamento de boards, colunas e tarefas, desenvolvido em **Java
 - Jakarta Validation (Bean Validation)
 - Lombok
 
-## 🔹 Estrutura do Projeto
-
-src/main/java
--br.com.projetos.Board_De_Tarefas
---controllers # Endpoints REST
---services # Lógica de negócio
---mappers # Conversão entre entidades e DTOs
---repositories # Interfaces JPA
---entities # Entidades JPA
---dto # Requests e Responses (DTOs)
-
 ##🔹 Documentação da API
 
 - O projeto utiliza Swagger/OpenAPI

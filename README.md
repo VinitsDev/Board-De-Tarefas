@@ -24,7 +24,7 @@ Um sistema de gerenciamento de boards, colunas e tarefas, desenvolvido em **Java
 - Jakarta Validation (Bean Validation)
 - Lombok
 
-##🔹 Documentação da API
+## 🔹 Documentação da API
 
 - O projeto utiliza Swagger/OpenAPI
 
@@ -54,7 +54,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
 - Certifique-se de criar o banco kanban_db no MySQL antes de iniciar a aplicação:
 - Substitua root e password pelas credenciais corretas do seu MySQL.
 
-##🔹 Contato
+## 🔹 Contato
 
 Desenvolvido por Vinicius T. Stefaneli
 - Email: vinicius.stefaneli@fatec.sp.gov.br

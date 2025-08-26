@@ -28,12 +28,12 @@ Um sistema de gerenciamento de boards, colunas e tarefas, desenvolvido em **Java
 
 src/main/java
 └─ br.com.projetos.Board_De_Tarefas
-├─ controllers # Endpoints REST
-├─ services # Lógica de negócio
-├─ mappers # Conversão entre entidades e DTOs
-├─ repositories # Interfaces JPA
-├─ entities # Entidades JPA
-└─ dto # Requests e Responses (DTOs)
+controllers # Endpoints REST
+services # Lógica de negócio
+mappers # Conversão entre entidades e DTOs
+repositories # Interfaces JPA
+entities # Entidades JPA
+dto # Requests e Responses (DTOs)
 
 ##🔹 Documentação da API
 
@@ -46,20 +46,21 @@ http://localhost:8080/swagger-ui.html
 
 No `application.properties` ou `application.yml`:
 
----
-`spring.application.name=Board-De-Tarefas`
+```
+spring.application.name=Board-De-Tarefas
 
-`spring.datasource.url=jdbc:mysql://localhost:3306/kanban_db?useSSL=false&serverTimezone=UTC`
+spring.datasource.url=jdbc:mysql://localhost:3306/kanban_db?useSSL=false&serverTimezone=UTC
 
-`spring.datasource.username=root`
-`spring.datasource.password=password`
+spring.datasource.username=root
+spring.datasource.password=password
 
-`spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver`
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 
-`spring.jpa.hibernate.ddl-auto=update`
-`spring.jpa.show-sql=true`
-`spring.jpa.properties.hibernate.format_sql=true`
-`spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect`
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+spring.jpa.database-platform=org.hibernate.dialect.MySQL8Dialect
+```
 
 - Certifique-se de criar o banco kanban_db no MySQL antes de iniciar a aplicação:
 - Substitua root e password pelas credenciais corretas do seu MySQL.
